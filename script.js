@@ -1,30 +1,3 @@
-// //plus btn
-// const plusBtn = document.getElementById("plus-btn");
-// const phonePrize = document.getElementById("phone-prize").innerText;
-// plusBtn.addEventListener("click", function () {
-//   const inputValue = document.getElementById("input-value").value;
-//   let inputNumber = parseFloat(inputValue);
-//   if (inputNumber >= 0) {
-//     inputNumber++;
-//   }
-//   document.getElementById("input-value").value = inputNumber;
-//   console.log(inputNumber);
-//   document.getElementById("phone-prize").innerText = phonePrize * inputNumber;
-// });
-
-//minus btn
-// const minusBtn = document.getElementById("minus-btn");
-// minusBtn.addEventListener("click", function () {
-//   const inputValue = document.getElementById("input-value").value;
-//   let inputNumber = parseFloat(inputValue);
-//   if (inputNumber > 0) {
-//     inputNumber--;
-//   }
-//   document.getElementById("input-value").value = inputNumber;
-//   console.log(inputNumber);
-//   document.getElementById("phone-prize").innerText = phonePrize * inputNumber;
-// });
-
 function BtnFunction(btnId, prize, taskFunction, taskId) {
   const phonePrize = document.getElementById(prize).innerText;
   const Btn = document.getElementById(btnId);
@@ -70,12 +43,17 @@ function hideItem(xId, nameId) {
 
   hideItem.addEventListener("click", function () {
     document.getElementById(nameId).style.display = "none";
+    const phone = parseFloat(document.getElementById("phone-prize").innerText);
+    const caseA = parseFloat(document.getElementById("case-prize").innerText);
+    let sumSubTotal = phone - caseA;
+    document.getElementById("subTotal").innerText = sumSubTotal;
   });
 }
 //hide function call
 hideItem("hidePhoneX", "hidePhone");
 hideItem("hideCaseX", "hideCase");
 
+//sum generator
 function Total() {
   const phone = parseFloat(document.getElementById("phone-prize").innerText);
   const caseA = parseFloat(document.getElementById("case-prize").innerText);
