@@ -38,19 +38,15 @@ BtnFunction("plus-btn-case", "case-prize", plusFunction, "input-value-case");
 BtnFunction("minus-btn-case", "case-prize", minusFunction, "input-value-case");
 
 //hide Function
-function hideItem(xId, nameId) {
+function hideItem(xId, nameId, inputId) {
   const hideItem = document.getElementById(xId);
-
+  document.getElementById(inputId).value = 0;
   hideItem.addEventListener("click", function () {
     document.getElementById(nameId).style.display = "none";
-    const phone = parseFloat(document.getElementById("phone-prize").innerText);
-    const caseA = parseFloat(document.getElementById("case-prize").innerText);
-    let sumSubTotal = phone - caseA;
-    document.getElementById("subTotal").innerText = sumSubTotal;
   });
 }
 //hide function call
-hideItem("hidePhoneX", "hidePhone");
+hideItem("hidePhoneX", "hidePhone", "input-value");
 hideItem("hideCaseX", "hideCase");
 
 //sum generator
@@ -60,7 +56,7 @@ function Total() {
   let sumSubTotal = phone + caseA;
   document.getElementById("subTotal").innerText = sumSubTotal;
   //tax generator
-  const taxTotal = sumSubTotal % 5;
+  const taxTotal = parseInt(sumSubTotal * 0.1);
   document.getElementById("taxTotal").innerText = taxTotal;
   // total sum
   const SumTotal = sumSubTotal + taxTotal;
